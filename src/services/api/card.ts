@@ -37,6 +37,7 @@ class card {
     } else {
       return {
         errorMessage: response.Data.Body.Fault.Detail.ServiceFaultDetail.ResponseDesc,
+        errorCode: responseCode,
       }
     }
   }
@@ -99,6 +100,7 @@ class card {
         validationToken: response.Data.Body.Fault.Detail.ServiceFaultDetail.Token,
         validationType: handleValidationType(errorResponse),
         errorMessage: errorResponse.ResponseDesc,
+        errorCode: errorResponse.ResponseCode,
         url3D: errorResponse.Url3D,
       }
     }
@@ -147,6 +149,7 @@ class card {
     } else {
       return {
         errorMessage: errorResponse.ResponseDesc,
+        errorCode: errorResponse.ResponseCode
       }
     }
   }
