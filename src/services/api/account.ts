@@ -37,6 +37,7 @@ class account {
     } else {
       return {
         errorMessage: errorResponse.ResponseDesc,
+        errorCode: errorResponse.ResponseCode
       }
     }
   }
@@ -77,6 +78,7 @@ class account {
         validationType: handleValidationType(errorResponse),
         errorMessage: errorResponse.ResponseDesc,
         url3D: errorResponse.Url3D,
+        errorCode: errorResponse.ResponseCode
       }
     }
   }
