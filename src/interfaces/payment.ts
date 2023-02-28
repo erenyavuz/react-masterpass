@@ -37,7 +37,6 @@ export namespace Payment {
   export interface IDirectReqPurchase {
     token: string
     msisdn: string
-    accountAliasName: string
     rtaPan: string
     expiryDate: string
     cvc: string
