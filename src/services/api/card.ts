@@ -48,9 +48,9 @@ class card {
      * @static
      * @memberof card
      */
-  static completeRegistration = async ({ params }: Card.ICompleteRegisterRequest) => {
+  static completeRegistration = async ({ params, lastToken }: Card.ICompleteRegisterRequest) => {
     const defaultParams = {
-      cardHolderName: null,      
+      cardAliasName: '',
       sendSms: 'N',
       referenceNo: '',
       dateTime: new Date().toISOString(),
@@ -58,7 +58,8 @@ class card {
 
     const serviceParams: Card.ICompleteReqCardRegister = {
       ...defaultParams,
-      ...params
+      ...params,
+      ...{ token2: lastToken }
     }
 
     const response: MP.IRes = await request.post(`/completeRegistration`, serviceParams)
