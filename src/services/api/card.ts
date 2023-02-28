@@ -41,7 +41,49 @@ class card {
       }
     }
   }
+  /**
+     *
+     * complete registration
+     *
+     * @static
+     * @memberof card
+     */
+  static completeRegistration = async ({ params }: Card.ICompleteRegisterRequest) => {
+    const defaultParams = {
+      cardHolderName: null,      
+      sendSms: 'N',
+      referenceNo: '',
+      dateTime: new Date().toISOString(),
+    }
 
+    const serviceParams: Card.ICompleteReqCardRegister = {
+      ...defaultParams,
+      ...params
+    }
+
+    const response: MP.IRes = await request.post(`/completeRegistration`, serviceParams)
+
+    if (response.error)
+      return {
+        errorMessage: response.error,
+      }
+
+    const errorResponse = response.Data.Body.Fault.Detail.ServiceFaultDetail
+
+    if (errorResponse.ResponseCode === '0000' || errorResponse.ResponseCode === '') {
+      return {
+        data: response.Data.Body.Response,
+      }
+    } else {
+      return {
+        validationToken: response.Data.Body.Fault.Detail.ServiceFaultDetail.Token,
+        validationType: handleValidationType(errorResponse),
+        errorMessage: errorResponse.ResponseDesc,
+        errorCode: errorResponse.ResponseCode,
+        url3D: errorResponse.Url3D,
+      }
+    }
+  }
   /**
    *
    * card register

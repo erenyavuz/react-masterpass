@@ -31,6 +31,27 @@ export namespace Payment {
     referenceNo?: string
     dateTime?: string
   }
+  export interface IDirectPurchaseRequest {
+    params: IDirectReqPurchase
+  }
+  export interface IDirectReqPurchase {
+    token: string
+    msisdn: string
+    accountAliasName: string
+    rtaPan: string
+    expiryDate: string
+    cvc: string
+    amount: string
+    cardHolderName?: string
+    referenceNo?: string
+    macroMerchantId?: string
+    orderNo?: string
+    installmentCount?: number
+    rewardName?: string
+    rewardValue?: string
+    sendSms?: string   
+    dateTime?: string
+  }
 
   export interface IPurchaseAndRegisterRequest {
     params: IReqPurchaseAndRegister

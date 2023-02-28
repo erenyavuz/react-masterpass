@@ -65,6 +65,56 @@ class payment {
   }
   /**
    *
+   * direct purchase
+   *
+   * @static
+   * @memberof payment
+   */
+  static directPurchase = async ({ params }: Payment.IDirectPurchaseRequest) => {
+    const defaultParams = {            
+      cardHolderName: '',
+      orderNo: '',
+      installmentCount: 0,
+      rewardName: '',
+      rewardValue: '',
+      macroMerchantId: '',
+      sendSms: 'N',
+      referenceNo: '',
+      dateTime: new Date().toISOString(),
+    }
+
+    const cvc = RSA.encrypt(params.cvc)
+
+    const serviceParams: Payment.IDirectReqPurchase = {
+      ...defaultParams,
+      ...params,
+      ...{ cvc },
+    }
+
+    const response: MP.IRes = await request.post(`/directPurchase`, serviceParams)
+
+    if (response.error)
+      return {
+        errorMessage: response.error,
+      }
+
+    const errorResponse = response.Data.Body.Fault.Detail.ServiceFaultDetail
+
+    if (errorResponse.ResponseCode === '0000' || errorResponse.ResponseCode === '') {
+      return {
+        data: response.Data.Body.Response,
+      }
+    } else {
+      return {
+        validationToken: response.Data.Body.Fault.Detail.ServiceFaultDetail.Token,
+        validationType: handleValidationTypeForPurchase(errorResponse),
+        errorMessage: errorResponse.ResponseDesc,
+        url3D: errorResponse.Url3D,
+      }
+    }
+  }
+  /**
+   *
    * purchase transaction and register card
    *
    * @static

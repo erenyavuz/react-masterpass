@@ -58,7 +58,17 @@ export namespace Card {
   export interface IRegisterRequest {
     params: IReqCardRegister
   }
-
+  export interface ICompleteReqCardRegister {
+    cardHolderName?: string | null
+    token: string
+    msisdn: string
+    referenceNo?: string
+    sendSms?: string    
+    dateTime?: string
+  }
+  export interface ICompleteRegisterRequest {
+    params: ICompleteReqCardRegister
+  }
   export interface IReqCardDelete {
     uiChannelType?: string
     mobileAccountConfig?: string
