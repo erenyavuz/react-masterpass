@@ -84,11 +84,12 @@ class payment {
     }
 
     const cvc = RSA.encrypt(params.cvc)
+    const rtaPan = RSA.encrypt(params.rtaPan)
 
     const serviceParams: Payment.IDirectReqPurchase = {
       ...defaultParams,
       ...params,
-      ...{ cvc },
+      ...{ cvc,rtaPan },
     }
 
     const response: MP.IRes = await request.post(`/directPurchase`, serviceParams)
