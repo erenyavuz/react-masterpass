@@ -75,12 +75,8 @@ class payment {
       cardHolderName: '',
       orderNo: '',
       installmentCount: 0,
-      rewardName: '',
-      rewardValue: '',
-      macroMerchantId: '',
       sendSms: 'N',
-      referenceNo: '',
-      dateTime: new Date().toISOString(),
+      referenceNo: ''
     }
 
     const cvc = RSA.encrypt(params.cvc)
