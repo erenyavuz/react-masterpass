@@ -76,7 +76,8 @@ class payment {
       orderNo: '',
       installmentCount: 0,
       sendSms: 'N',
-      referenceNo: ''
+      referenceNo: '',
+      dateTime: new Date().toISOString(),
     }
 
     const cvc = RSA.encrypt(params.cvc)
