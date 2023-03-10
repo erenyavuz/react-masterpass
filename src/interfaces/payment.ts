@@ -15,7 +15,6 @@ export namespace Payment {
     sendSms?: string
     encCPin?: string    
     password?: string
-    clientIp?: string
     encPassword?: string    
     referenceNo?: string
     dateTime?: string
