@@ -16,7 +16,6 @@ class payment {
     const defaultParams = {
       sendSms: 'N',
       aav: 'aav',
-      clientIp: '',
       encCPin: '0',
       encPassword: '',
       sendSmsMerchant: 'Y',
