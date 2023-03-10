@@ -14,22 +14,13 @@ class payment {
    */
   static purchase = async ({ params }: Payment.IPurchaseRequest) => {
     const defaultParams = {
+      sendSms: 'N',
       aav: 'aav',
-      sendSmsMerchant: 'Y',
-      sendSms: 'Y',
+      clientIp: '',
       encCPin: '0',
-      rewardValue: '',
-      rewardName: '',
-      paymentType: '',
-      macroMerchantId: '',
-      moneyCardInvoiceAmount: null,
-      moneyCardMigrosDiscountAmount: null,
-      moneyCardPaymentAmount: null,
-      moneyCardExtraDiscountAmount: null,
-      moneyCardProductBasedDiscountAmount: null,
-      password: '',
       encPassword: '',
-      fp: '',
+      sendSmsMerchant: 'Y',
+      password: '',
       dateTime: new Date().toISOString(),
     }
 
