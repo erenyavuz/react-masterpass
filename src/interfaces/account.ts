@@ -5,6 +5,7 @@ export namespace Account {
   export interface IReqCheckMasterpass {
     token: string
     msisdn: string
+    userId: string
     sendSms?: string
     referenceNo?: string
     dateTime?: string
