@@ -14,7 +14,6 @@ class account {
   static checkMasterpass = async ({ params }: Account.ICheckMasterpassRequest) => {
     const defaultParams = {
       sendSms: 'Y',
-      fp: '',
       referenceNo: '',
       dateTime: new Date().toISOString(),
     }
@@ -52,8 +51,6 @@ class account {
     const defaultParams = {
       sendSms: 'Y',
       referenceNo: '',
-      cardAliasName: '',
-      fp: '',
       dateTime: new Date().toISOString(),
     }
 
