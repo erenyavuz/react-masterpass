@@ -22,13 +22,9 @@ class payment {
       password: '',
       dateTime: new Date().toISOString(),
     }
-
-    const cvc = RSA.encrypt(params.cvc)
-
     const serviceParams: Payment.IReqPurchase = {
       ...defaultParams,
-      ...params,
-      ...{ cvc },
+      ...params
     }
 
     const response: MP.IRes = await request.post(`/remotePurchaseOther`, serviceParams)
