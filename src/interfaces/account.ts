@@ -6,7 +6,6 @@ export namespace Account {
     token: string
     msisdn: string
     sendSms?: string
-    fp?: string | null
     referenceNo?: string
     dateTime?: string
   }
@@ -17,10 +16,8 @@ export namespace Account {
   export interface IReqLinkAccount {
     token: string
     msisdn: string
-    cardAliasName: string
     sendSms?: string
     referenceNo?: string
-    fp?: string | null
     dateTime?: string
   }
 }
